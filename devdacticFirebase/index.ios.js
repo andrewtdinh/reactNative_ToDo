@@ -16,7 +16,7 @@ class devdacticFirebase extends Component {
   // Your App Code
   constructor(props) {
     super(props);
-    var myFirebaseRef = new Firebase('https://.firebaseio.com');
+    var myFirebaseRef = new Firebase('https://glaring-inferno-4479.firebaseio.com/');
 
     myFirebaseRef.set({
       title: "Hello World!",
