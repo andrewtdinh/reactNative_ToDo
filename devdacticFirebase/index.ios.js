@@ -18,15 +18,23 @@ class devdacticFirebase extends Component {
     super(props);
     var myFirebaseRef = new Firebase('https://glaring-inferno-4479.firebaseio.com/');
 
-    myFirebaseRef.set({
-      title: "Hello World!",
-      author: "Simon",
-      location: {
-        city: "Muenster",
-        state: "Germany",
-        zip: 48155
-      }
-    });
+    this.itemsRef = myFirebaseRef.child('items');
+
+    // myFirebaseRef.set({
+    //   title: "Hello World!",
+    //   author: "Simon",
+    //   location: {
+    //     city: "Muenster",
+    //     state: "Germany",
+    //     zip: 48155
+    //   }
+    // });
+    this.state = {
+      newTodo: '',
+      todoSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2})
+    };
+
+    this.items = [];
   }
 }
 
