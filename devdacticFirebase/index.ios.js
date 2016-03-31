@@ -65,6 +65,10 @@ class devdacticFirebase extends Component {
       });
     }
   }
+
+  removeTodo(rowData) {
+    this.itemsRef.child(rowData.id).remove();
+  }
 }
 
 var styles = StyleSheet.create({
