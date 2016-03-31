@@ -36,6 +36,24 @@ class devdacticFirebase extends Component {
 
     this.items = [];
   }
+
+  componentDidMount() {
+    // When a todo is added
+    this.itemsRef.on('child_added', (dataSnapshot) => {
+      this.items.push({id: dataSnapshot.key(), text: dataSnapshot.val()});
+      this.setState({
+        todoSource: this.state.todoSource.cloneWithRows(this.items)
+      });
+    });
+
+    // When a todo is removed
+    this.itemsRef.on('child_removed', (dataSnapshot) => {
+      this.items = this.items.filter((x) => x.id !== dataSnapshot.key());
+      this.setState({
+        todoSource: this.state.todoSource.cloneWithRows(this.items)
+      });
+    });
+  }
 }
 
 var styles = StyleSheet.create({
