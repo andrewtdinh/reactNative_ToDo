@@ -69,6 +69,30 @@ class devdacticFirebase extends Component {
   removeTodo(rowData) {
     this.itemsRef.child(rowData.id).remove();
   }
+
+  render() {
+    return (
+      <View style={styles.appContainer}>
+        <View style={styles.titleView}>
+          <Text style={styles.titleText}>
+            My Todos
+          </Text>
+        </View>
+        <View style={styles.inputcontainer}>
+          <TextInput style={styles.input} onChangeText={(text) => this.setState({newTodo: text})} value={this.state.newTodo}/>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={() => this.addTodo()}
+            underlayColor='#dddddd'>
+            <Text style={styles.btnText}>Add!</Text>
+          </TouchableHighlight>
+        </View>
+        <ListView
+          dataSource={this.state.todoSource}
+          renderRow={this.renderRow.bind(this)} />
+      </View>
+    );
+  }
 }
 
 var styles = StyleSheet.create({
