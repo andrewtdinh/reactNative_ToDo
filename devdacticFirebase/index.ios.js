@@ -54,6 +54,17 @@ class devdacticFirebase extends Component {
       });
     });
   }
+
+  addTodo() {
+    if (this.state.newTodo !== '') {
+      this.itemsRef.push({
+        todo: this.state.newTodo
+      });
+      this.setState({
+        newTodo : ''
+      });
+    }
+  }
 }
 
 var styles = StyleSheet.create({
