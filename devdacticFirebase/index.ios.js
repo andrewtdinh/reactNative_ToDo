@@ -70,6 +70,21 @@ class devdacticFirebase extends Component {
     this.itemsRef.child(rowData.id).remove();
   }
 
+  renderRow(rowData) {
+    return (
+      <TouchableHighlight
+        underlayColor='#dddddd'
+        onPress={() => this.removeTodo(rowData)}>
+        <View>
+          <View style={styles.row}>
+            <Text style={styles.todoText}>{rowData.text}</Text>
+          </View>
+          <View style={styles.separator} />
+        </View>
+      </TouchableHighlight>
+    );
+  }
+
   render() {
     return (
       <View style={styles.appContainer}>
